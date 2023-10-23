@@ -88,13 +88,15 @@ const main = async () => {
                     producto.setInventarioProducto = objeto.inventarioProducto;
                     producto.setPrecioProducto = objeto.precioProducto;
                     this.#listaProductos.push(producto);
+
+           console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦`.red);
+            console.log(`♦ `.red + `Total de productos cargados ==> `.bgRed + ` ${contador}`.bgRed + ` ♦`.red);
+            console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦\n`.red);
                 });
             } else {
                 console.log(`Error, el archivo datos.json no contiene datos\n`.bgYellow);
             }
-            console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦`.red);
-            console.log(`♦ `.red + `Total de productos cargados ==> `.bgRed + ` ${contador}`.bgRed + ` ♦`.red);
-            console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦\n`.red);
+ 
         }
 
         /*Se crea un método que permite visualizar cada uno de los productos y sus respectivos atributos y que 
