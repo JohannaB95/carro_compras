@@ -1,19 +1,25 @@
 const mostrarMenu = () => {
 
+    // Mostrar el menú de opciones para el ingreso de un nuevo producto
     return new Promise(resolve => {
+         // Muestra el menú en la consola con opciones para aceptar o cancelar
         console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦`.blue);
-        console.log(`♦  `.blue + `INGRESO NUEVO PRODUCTO`.cyan+ `  ♦`.blue)
+        console.log(`♦  `.blue + `INGRESO NUEVO PRODUCTO`.cyan + `  ♦`.blue)
         console.log(`♦     `.blue + `Elija una opción`.cyan + `     ♦`.blue)
-        console.log(`♦               `.blue  + `           ♦`.blue)
+        console.log(`♦               `.blue + `           ♦`.blue)
         console.log(`♦        `.blue + `${'1.'.yellow} Aceptar`.cyan + `        ♦`.blue);
         console.log(`♦        `.blue + `${'0.'.yellow} Cancelar`.cyan + `       ♦`.blue);
         console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦\n`.blue);
 
+        // Crea una interfaz de lectura en la consola para permitir la entrada del usuario
         const readLine = require('readline').createInterface({
             input: process.stdin,
-            output: process.stdout 
+            output: process.stdout
         });
+        // Pregunta al usuario si desea ingresar un nuevo producto
         readLine.question(`\n¿Desea ingresar un nuevo producto?`.red, (opt) => {
+            /* Una vez que el usuario proporciona la entrada, se cierra la interfaz de lectura y se resuelve la 
+            promesa con la opción seleccionada*/
             readLine.close();
             resolve(opt);
         })
@@ -28,7 +34,9 @@ const pausa = () => {
             output: process.stdout
         })
 
+        // Se le pide al usuario que presione ENTER para continuar
         readLine.question(`\n Presione ${'ENTER'} para continuar\n`.green, (opt) => {
+             // Una vez que el usuario presiona ENTER, se cierra la interfaz de lectura y se resuelve la promesa
             readLine.close();
             resolve(opt);
         })
@@ -116,7 +124,7 @@ const preguntarOtroProducto = () => {
 const mostrarMenuPedido = () => {
     return new Promise(resolve => {
         console.log(`\n♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦`.yellow);
-        console.log(`♦   ` .yellow+ `INGRESO NUEVO PEDIDO`.cyan + `  ♦`.yellow)
+        console.log(`♦   `.yellow + `INGRESO NUEVO PEDIDO`.cyan + `  ♦`.yellow)
         console.log(`♦     `.yellow + `Elija una opción`.cyan + `    ♦`.yellow)
         console.log(`♦        `.yellow + `${'1.'.red} Aceptar` + `       ♦`.yellow);
         console.log(`♦        `.yellow + `${'0.'.red} Cancelar` + `      ♦`.yellow);
@@ -124,7 +132,7 @@ const mostrarMenuPedido = () => {
 
         const readLine = require('readline').createInterface({
             input: process.stdin,
-            output: process.stdout 
+            output: process.stdout
         });
 
         readLine.question(`\n¿Desea ingresar un nuevo pedido? `.red, (opt1) => {
@@ -259,4 +267,4 @@ module.exports = {
     ingresarPrecio,
     pausa1,
     preguntarOtroPedido,
-  };
+};
