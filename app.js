@@ -301,7 +301,7 @@ const main = async () => {
                     // Se pausa la ejecución para esperar la entrada del usuario
                     await pausa1();
                 }
-            // Se repite mientras la opción no sea '1'
+                // Se repite mientras la opción no sea '1'
             } while (option1 !== '1');
 
 
@@ -312,7 +312,7 @@ const main = async () => {
             do {
                 // Espera a que el usuario ingrese el nombre del cliente y lo asigna a la variable 'nombreCliente'
                 nombreCliente = await ingresarNombreCliente();
-            // Se repite mientras 'nombreCliente' sea un string vacío
+                // Se repite mientras 'nombreCliente' sea un string vacío
             } while (!(nombreCliente !== ''));
 
             //Se usa un bucle que se estará ejecutando indefinidamente hasta que el usuario decida no ingresar más pedidos
@@ -325,7 +325,7 @@ const main = async () => {
                 do {
                     // Espera a que el usuario ingrese el codigo y lo asigna a la variable 'codigo'
                     codigo = await ingresarCodigo();
-                // Se repite mientras 'codigo' sea un string vacío
+                    // Se repite mientras 'codigo' sea un string vacío
                 } while (!(codigo !== ''));
 
                 // Se declara una variable llamada nombre con un valor inicial de un string vacío
@@ -334,7 +334,7 @@ const main = async () => {
                 do {
                     // Espera a que el usuario ingrese el nombre y lo asigna a la variable 'nombre'
                     nombre = await ingresarNombre();
-                // Se repite mientras 'nombre' sea un string vacío
+                    // Se repite mientras 'nombre' sea un string vacío
                 } while (!(nombre !== ''));
 
                 // Se declara una variable llamada unidades con un valor inicial de un string vacío
@@ -344,7 +344,7 @@ const main = async () => {
                 do {
                     // Espera a que el usuario ingrese el unidades y lo asigna a la variable 'unidades'
                     unidades = await ingresarUnidades();
-                // Se repite mientras 'unidades' sea un string vacío
+                    // Se repite mientras 'unidades' sea un string vacío
                 } while (!(unidades !== ''));
 
                 // Se declara una variable llamada precio con un valor inicial de un string vacío
@@ -354,7 +354,7 @@ const main = async () => {
                 do {
                     // Espera a que el usuario ingrese el precio y lo asigna a la variable 'precio'
                     precio = await ingresarPrecio();
-                 // Se repite mientras 'precio' sea un string vacío
+                    // Se repite mientras 'precio' sea un string vacío
                 } while (!(precio !== ''));
 
                 /*Se declara una función constante que se llama imprimirFactura que es una función flecha y toma 
@@ -414,7 +414,7 @@ const main = async () => {
     // Se cargan los productos desde un archivo y se almacenan en la lista de productos
     productosTienda.cargarArchivoProductos();
 
-     // Se imprime un mensaje indicando los datos al momento de la apertura de la tienda
+    // Se imprime un mensaje indicando los datos al momento de la apertura de la tienda
     console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦`.green);
     console.log(`♦  `.green + `Datos Apertura Tienda`.bgGreen + `  ♦`.green);
     console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦\n`.green);
@@ -431,7 +431,7 @@ const main = async () => {
     // Se espera a que se complete la función nuevoIngreso antes de continuar
     await productosTienda.nuevoIngreso();
 
-     // Se espera a que se complete la función nuevoPedido antes de continuar
+    // Se espera a que se complete la función nuevoPedido antes de continuar
     await productosTienda.nuevoPedido();
 
 };
