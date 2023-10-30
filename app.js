@@ -118,10 +118,20 @@ const main = async () => {
 
                     // Se crea una nueva instancia de la clase Producto
                     let producto = new Producto;
+
                     // Se asignan los valores del objeto a cada uno de los atributos 
+
+                    /*Se llama al método setCodigoProducto del objeto producto y se le asigna el valor de la propiedad 
+                    codigoProducto del objeto objeto*/
                     producto.setCodigoProducto = objeto.codigoProducto;
+                    /*Se llama al método setNombreProducto del objeto producto y se le asigna el valor de la propiedad
+                    nombreProducto del objeto objeto*/
                     producto.setNombreProducto = objeto.nombreProducto;
+                    /*Se llama al método setInventarioProducto del objeto producto y se le asigna el valor de la propiedad 
+                    inventarioProducto del objeto objeto*/
                     producto.setInventarioProducto = objeto.inventarioProducto;
+                    /*Se llama al método setPrecioProducto del objeto producto y se le asigna el valor de la propiedad 
+                    precioProducto del objeto objeto*/
                     producto.setPrecioProducto = objeto.precioProducto;
 
                     // Agrega el producto a la lista de productos en la clase ProductosTienda
@@ -223,9 +233,13 @@ const main = async () => {
                 // Se crea un nuevo objeto Producto y se les asigna los valores ingresados por el usuario
                 const producto = new Producto();
 
+                //Se asigna el valor del código del producto con el valor de la variable codigo.
                 producto.setCodigoProducto = codigo;
+                //Se asigna el valor del nombre del producto con el valor de la variable nombre
                 producto.setNombreProducto = nombre;
+                //Se asigna el valor del inventario del producto con el valor de la variable inventario.
                 producto.setInventarioProducto = inventario;
+                //Se asigna el valor del precio del producto con el valor de la variable precio.
                 producto.setPrecioProducto = precio;
 
                 // Se llama al método guardarProducto para guardar el producto
@@ -250,12 +264,22 @@ const main = async () => {
             this.#listaProductos.push(producto);
 
             // Convierte objetos de clase a objetos de JavaScript y luego a una cadena de texto JSON para su almacenamiento
+            //Se crea un nuevo arreglo
             const instanciaClaseAObjetos = this.#listaProductos.map(producto => {
                 // Mapea cada objeto de clase a un objeto de JavaScript con claves específicas
+                //Devuelve un objeto con las propiedades del producto
                 return {
+                    /*Asigna el valor de la propiedad codigoProducto del objeto producto a la clave codigoProducto 
+                    en el objeto devuelto*/
                     codigoProducto: producto.getCodigoProducto,
+                    /*Asigna el valor de la propiedad nombreProducto del objeto producto a la clave nombreProducto
+                    en el objeto devuelto*/
                     nombreProducto: producto.getNombreProducto,
+                    /*Convierte el valor de la propiedad inventarioProducto del objeto producto en un número 
+                    utilizando la función Number y lo asigna a la clave inventarioProducto en el objeto devuelto.*/
                     inventarioProducto: Number(producto.getInventarioProducto),
+                    /*Convierte el valor de la propiedad precioProducto del objeto producto en un número utilizando
+                    la función Number y lo asigna a la clave precioProducto en el objeto devuelto. */
                     precioProducto: Number(producto.getPrecioProducto)
                 };
             });
@@ -387,21 +411,30 @@ const main = async () => {
                     console.log(`★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★`.magenta);
                 };
 
-                // Agregar el producto al array de productos
+                //Se agrega el producto al array de productos
                 productos.push({
+                    //Se asigna el valor de la variable codigo a la propiedad codigo del nuevo objeto.
                     codigo: codigo,
+                    //Se asigna el valor de la variable nombre a la propiedad nombre del nuevo objeto.
                     nombre: nombre,
+                    //Se asigna el valor de la variable unidades a la propiedad unidades del nuevo objeto.
                     unidades: unidades,
+                    //Se asigna el valor de la variable precio a la propiedad precio del nuevo objeto.
                     precio: precio
                 });
 
                 // Preguntar si se desea agregar otro pedido
                 const continuarPedido = await preguntarOtroPedido();
 
-                // Verificar si no se desea continuar con el pedido y llama a la función imprimirFactura
+                /*Verifica si la variable continuarPedido es falsa, lo que significa que el usuario no quiere continuar 
+                agregando más productos al pedido actual*/
                 if (!continuarPedido) {
 
+                    /* Se llama a la función imprimirFactura pasando los parámetros nombreCliente y productos. Esta 
+                    función se utiliza para imprimir una factura con los detalles del cliente y los productos comprados.*/
                     imprimirFactura(nombreCliente, productos);
+                    /*Rompe el bucle actual en el que se encuentra, lo que permite finalizar el proceso de agregar 
+                    más productos al pedido y continuar con la siguiente sección del código.*/
                     break;
                 }
             }
