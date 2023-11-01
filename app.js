@@ -328,7 +328,6 @@ const main = async () => {
                 // Se repite mientras la opción no sea '1'
             } while (option1 !== '1');
 
-
             // Se declara una variable llamada nombreCliente con un valor inicial de un string vacío
             let nombreCliente = ' ';
 

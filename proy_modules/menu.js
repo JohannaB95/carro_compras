@@ -193,7 +193,6 @@ const mostrarMenuPedido = () => {
             //Define el flujo de salida, para mostrar mensajes en la consola
             output: process.stdout
         });
-
         // Pregunta al usuario si desea ingresar otro producto
         readLine.question(`\n¿Desea ingresar un nuevo pedido? `.red, (opt1) => {
             // Se cierra la interfaz de lectura
