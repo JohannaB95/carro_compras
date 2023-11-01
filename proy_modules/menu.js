@@ -263,7 +263,6 @@ const ingresarCodigo = () => {
             //Define el flujo de salida, para mostrar mensajes en la consola
             output: process.stdout
         });
-
         // Solicita al usuario que ingrese el código del producto que desea
         readLine.question(`\nIngrese el código del producto ►  `.green, (codigoProducto) => {
             // Se cierra la interfaz de lectura

@@ -254,7 +254,6 @@ const main = async () => {
                 }
             }
         }
-
         /*Escribir datos en un archivo almacenado en unidad
         Deserializar para convertir un arreglo de objetos de clase en cadena Json
         Se crea un método que agrega un nuevo producto a la lista productos y que tiene como argumento producto*/
