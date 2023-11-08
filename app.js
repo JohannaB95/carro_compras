@@ -157,7 +157,6 @@ const main = async () => {
                 console.log(`­♦    `.yellow + producto.getCodigoProducto + `     ­♦   `.yellow
                     + producto.getNombreProducto + `      ­♦   `.yellow +
                     +  producto.getInventarioProducto + `      ­♦   `.yellow +
-                    +  producto.getInventarioProducto + `       ­♦   `.yellow +
                     +  producto.getPrecioProducto + `     ­♦   `.yellow);
             })
         }
