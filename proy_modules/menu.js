@@ -172,7 +172,7 @@ const preguntarOtroProducto = () => {
     });
 };
 
-//Se crea una función constante que es una función  flecha llamada mostrarMenuPedido
+//Se crea una función constante que es una función flecha llamada mostrarMenuPedido
 const mostrarMenuPedido = () => {
 
     // Retorna una nueva promesa que se resuelve con el valor proporcionado en la función 'resolve'
@@ -297,7 +297,7 @@ const ingresarNombre = () => {
     })
 };
 
-//Se crea una función constante que es una función  flecha llamada ingresarUnidades
+//Se crea una función constante que es una función flecha llamada ingresarUnidades
 const ingresarUnidades = () => {
 
     // Retorna una nueva promesa que se resuelve con el valor proporcionado en la función 'resolve'

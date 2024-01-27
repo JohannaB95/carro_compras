@@ -4,14 +4,14 @@ require('colors');
 //Se importa el módulo fs para gestionar los archivos en el sistema
 const fs = require('fs');
 
-// Lee y carga el contenido del archivo 'datos.json' en la variable 'datosArchivo'
+//Se declara una constante llamada datosArchivo que lee, carga y almacena el contenido del archivo 'datos.json' .
 const datosArchivo = require('./datos.json');
 
 //Se importan funciones desde el archivo 'menu.js' en la carpeta 'proy_modules'
 const { mostrarMenu, digitarCodigo, digitarNombre, digitarInventario, digitarPrecio, pausa, preguntarOtroProducto, mostrarMenuPedido,
     ingresarNombreCliente, ingresarCodigo, ingresarNombre, ingresarUnidades, ingresarPrecio, pausa1, preguntarOtroPedido, } = require('./proy_modules/menu.js');
 
-//Se declara una función flecha llamada main y que es asíncrona
+//Se declara una constante que es una  función flecha llamada main y que es asíncrona
 const main = async () => {
 
     // Limpia la consola antes de imprimir el menú principal
@@ -34,13 +34,13 @@ const main = async () => {
         // Se llama al constructor que inicializa los atributos de la clase
         constructor() {
 
-            // Inicializa el código del producto como un espacio en blanco
+            //Inicializa el código del producto con un string vacio
             this.#codigoProducto = ' ';
-            // Inicializa el nombre del producto como un espacio en blanco
+            //Inicializa el nombre del producto con un string vacio
             this.#nombreProducto = ' ';
-            // Inicializa el inventario del producto como 0
+            //Inicializa el inventario del producto en 0
             this.#inventarioProducto = 0;
-            // Inicializa el precio del producto como 0
+            //Inicializa el precio del producto en 0
             this.#precioProducto = 0;
         }
 
@@ -91,7 +91,7 @@ const main = async () => {
         // Se declara un atributo privado llamado listaProductos
         #listaProductos;
 
-        // Constructor que inicializa el atributo #listaProductos como un arreglo vacío
+        //Constructor que inicializa el atributo #listaProductos con un arreglo vacío
         constructor() {
             this.#listaProductos = [];
         }
@@ -102,16 +102,18 @@ const main = async () => {
         }
 
         /*Leer los datos del archivo Json
-          Serializar para trabajar los datos como un arreglo de objetos de clase Producto*/
-        // Se crea un método para cargar un archivo de datos que contiene la información de los productos
+        Serializar para trabajar los datos como un arreglo de objetos de clase Producto*/
+        //Se crea un método llamado cargarArchivoProductos sin parámetros
         cargarArchivoProductos() {
 
             //Se crea una variable llamada contador que se inicia en 0
             let contador = 0;
 
-            //Se utiliza un if para verificar si existe algún dato en el archivo datosArchivo
+            //Se declara un if para verificar si existe algún dato en el archivo datosArchivo
             if (datosArchivo.length > 0) {
-                //Se usa un forEach para iterar cada elemento que se encuentre en el archivo 
+                // Se utiliza un forEach para iterar cada elemento que se encuentre en el archivo
+                /*El parámetro objeto dentro de la función flecha en el forEach representa cada elemento individual 
+                en el arreglo datosArchivo a medida que se itera.*/
                 datosArchivo.forEach(objeto => {
                     //El contador aumentara cada vez +1
                     contador++;
@@ -134,10 +136,10 @@ const main = async () => {
                     precioProducto del objeto objeto*/
                     producto.setPrecioProducto = objeto.precioProducto;
 
-                    // Agrega el producto a la lista de productos en la clase ProductosTienda
+                    //Se agrega el producto a la lista de productos en la clase ProductosTienda
                     this.#listaProductos.push(producto);
 
-                    //Se imprime en la consola el número de productos cargados y se añade diseño a la interfaz
+                    //Se imprime en la consola la cantidad de productos existentes y se añade diseño a la interfaz
                     console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦`.red);
                     console.log(`♦ `.red + `Total de productos cargados ==> `.bgRed + ` ${contador}`.bgRed + ` ♦`.red);
                     console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦\n`.red);
@@ -167,26 +169,26 @@ const main = async () => {
             // Se declara una variable llamada option con un valor inicial de un string vacío
             let option = ' ';
 
-            // Bucle externo que se ejecuta al menos una vez y se repite mientras la opción no sea '1'
+            // Bucle externo que se ejecuta al menos una vez y se repite mientras no se cumpla la condición
             do {
                 // Bucle interno que se ejecuta al menos una vez y se repite hasta que se ingresa una opción válida del menú
                 do {
                     // Muestra el menú y espera la entrada del usuario
                     option = await mostrarMenu();
-                    // Verifica si la opción está entre 0 y 1
+                    // Mientras la opción no sea 0 o 1, se seguirá ejecutando el bucle
                 } while (!(option >= '0' && option <= '1'));
 
-                // Verifica si la opción no es '0'
+                //Si la opción elegida es diferente de 0:
                 if (option !== '0') {
                     //Se imprime un mensaje diciendo cual es el proceso que se ejecuta
                     console.log(`\nSe ejecuta el proceso ${option}`.green);
                     // Se pausa la ejecución para esperar la entrada del usuario
                     await pausa();
                 }
-                // Se repite mientras la opción no sea '1'
+                //El bucle se repite mientras la opción no sea '1'
             } while (option !== '1');
 
-            //Se usa un bucle que se estará ejecutando indefinidamente hasta que el usuario decida no ingresar más productos
+            //Se usa un bucle que se estará ejecutando hasta que el usuario decida no ingresar más productos
             while (true) {
 
                 // Se declara una variable llamada codigo con un valor inicial de un string vacío
@@ -194,7 +196,7 @@ const main = async () => {
 
                 // Bucle que se ejecuta al menos una vez y se repite hasta que se ingresa un código válido
                 do {
-                    // Espera a que el usuario ingrese un código y lo asigna a la variable 'codigo'
+                    //Se espera a que el usuario ingrese un código y lo asigna a la variable 'codigo'
                     codigo = await digitarCodigo();
                     // Se repite mientras 'codigo' sea un string vacío
                 } while (!(codigo !== ''));
@@ -212,7 +214,7 @@ const main = async () => {
                 // Se declara una variable llamada inventario con un valor inicial de un string vacío
                 let inventario = '';
 
-                // Bucle  que se ejecuta al menos una vez y se repite hasta que se ingresa un inventario válido
+                // Bucle que se ejecuta al menos una vez y se repite hasta que se ingresa un inventario válido
                 do {
                     // Espera a que el usuario ingrese un inventario y lo asigna a la variable 'inventario'
                     inventario = await digitarInventario();
@@ -222,7 +224,7 @@ const main = async () => {
                 // Se declara una variable llamada precio con un valor inicial de un string vacío
                 let precio = '';
 
-                // Bucle  que se ejecuta al menos una vez y se repite hasta que se ingresa un precio válido
+                // Bucle que se ejecuta al menos una vez y se repite hasta que se ingresa un precio válido
                 do {
                     // Espera a que el usuario ingrese un precio y lo asigna a la variable 'precio'
                     precio = await digitarPrecio();
@@ -248,14 +250,17 @@ const main = async () => {
                 se rompe el bucle */
                 const continuar = await preguntarOtroProducto();
 
+                // Verifica si 'continuar' es falso
                 if (!continuar) {
+                    // Si continuar es falso, se ejecuta la instrucción break
+                    //La instrucción break rompe el bucle más cercano en el que se encuentra
                     break;
                 }
             }
         }
         /*Escribir datos en un archivo almacenado en unidad
         Deserializar para convertir un arreglo de objetos de clase en cadena Json
-        Se crea un método que agrega un nuevo producto a la lista productos y que tiene como argumento producto*/
+        Se crea un método llamado guardarProducto y que tiene como parámetro a producto*/
         guardarProducto(producto) {
 
             // Agrega el producto a la lista de productos
@@ -284,12 +289,12 @@ const main = async () => {
 
             // Se utiliza JSON.stringify para convertir los objetos de JavaScript en una cadena de texto JSON
             const cadenaJson = JSON.stringify(instanciaClaseAObjetos, null, 2);
-            //Se declara una variable que va a almacenar el archivo en el que se va a guardar la información
+            //Se declara una constante llamada nombreArchivo, que almacena el archivo con los datos de los productos
             const nombreArchivo = 'datos.json';
 
-            /*Se utiliza para escribir datos en un archivo de manera sincrónica. El nombre del archivo en el que 
-            se escribirán los datos. La cadena de texto JSON que se va a escribir en el archivo. La codificación 
-            de caracteres que se utilizará al escribir el archivo.*/
+            /*Se utiliza fs.writeFileSync para escribir datos en un archivo de manera sincrónica, tiene tres elementos:
+            El nombre del archivo en el que se escribirán los datos, la cadena de texto JSON que se va a escribir 
+            en el archivo y La codificación de caracteres que se utilizará al escribir el archivo.*/
             fs.writeFileSync(nombreArchivo, cadenaJson, 'UTF-8');
 
             // Se imprime un mensaje indicando que los datos se han guardado en un archivo llamado datos.json
@@ -301,8 +306,8 @@ const main = async () => {
         //Se crea un nuevo método asincróno que realiza el proceso para un nuevo pedido
         nuevoPedido = async () => {
 
-            /*Se declara una variable llamada productos que tiene un  array vacío que almacenará los productos 
-            ingresados en el pedido*/
+            /*Se declara una variable llamada productos que se inicia con un array vacío que almacenará los 
+            productos ingresados en el pedido*/
             const productos = [];
 
             // Se declara una variable llamada option con un valor inicial de un string vacío
@@ -311,19 +316,19 @@ const main = async () => {
             do {
                 // Bucle interno que se ejecuta al menos una vez y se repite hasta que se ingresa una opción válida del menú
                 do {
-                    // Muestra el menú y espera la entrada del usuario
+                    //Muestra el menú y espera la entrada del usuario
                     option1 = await mostrarMenuPedido();
-                    // Verifica si la opción está entre 0 y 1
+                    //Mientras la opción elegida no sea 0 o 1 el bucle se seguirá ejecutando
                 } while (!(option1 >= '0' && option1 <= '1'));
 
-                // Verifica si la opción no es '0'
+                //Se verifica si la opción no es '0', si es así:
                 if (option1 !== '0') {
                     //Se imprime un mensaje diciendo cual es el proceso que se ejecuta
                     console.log(`\nSe ejecuta el proceso ${option1}`.green);
                     // Se pausa la ejecución para esperar la entrada del usuario
                     await pausa1();
                 }
-                // Se repite mientras la opción no sea '1'
+                //El bucle se repite mientras la opción no sea '1'
             } while (option1 !== '1');
 
             // Se declara una variable llamada nombreCliente con un valor inicial de un string vacío
@@ -331,7 +336,7 @@ const main = async () => {
 
             // Bucle  que se ejecuta al menos una vez y se repite hasta que se ingresa un nombre de cliente válido
             do {
-                // Espera a que el usuario ingrese el nombre del cliente y lo asigna a la variable 'nombreCliente'
+                //Espera a que el usuario ingrese el nombre del cliente y lo asigna a la variable 'nombreCliente'
                 nombreCliente = await ingresarNombreCliente();
                 // Se repite mientras 'nombreCliente' sea un string vacío
             } while (!(nombreCliente !== ''));
@@ -342,7 +347,7 @@ const main = async () => {
                 // Se declara una variable llamada codigo con un valor inicial de un string vacío
                 let codigo = ' ';
 
-                // Bucle  que se ejecuta al menos una vez y se repite hasta que se ingresa un codigo válido
+                // Bucle que se ejecuta al menos una vez y se repite hasta que se ingresa un codigo válido
                 do {
                     // Espera a que el usuario ingrese el codigo y lo asigna a la variable 'codigo'
                     codigo = await ingresarCodigo();
@@ -351,7 +356,8 @@ const main = async () => {
 
                 // Se declara una variable llamada nombre con un valor inicial de un string vacío
                 let nombre = ' ';
-                // Bucle  que se ejecuta al menos una vez y se repite hasta que se ingresa un nombre válido
+
+                // Bucle que se ejecuta al menos una vez y se repite hasta que se ingresa un nombre válido
                 do {
                     // Espera a que el usuario ingrese el nombre y lo asigna a la variable 'nombre'
                     nombre = await ingresarNombre();
@@ -393,7 +399,8 @@ const main = async () => {
                     console.log(`★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★`.magenta);
                     //Se declara una variable llamada total con un valor inicial de 0
                     let total = 0;
-                    // Iterar sobre cada producto del arreglo productos y tomando el costo y la cantidad calcula el subtotal
+                    /*Se itera sobre cada producto del arreglo productos y tomando el costo y la cantidad se calcula 
+                    el subtotal*/
                     productos.forEach(producto => {
                         //Se declara una variable que guardara el valor subtotal de cada uno de los productos que el usuario solicite
                         const subtotal = producto.unidades * producto.precio;
@@ -449,6 +456,7 @@ const main = async () => {
     console.log(`♦  `.green + `Datos Apertura Tienda`.bgGreen + `  ♦`.green);
     console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦\n`.green);
 
+    //Se llama al método mostrarProductos
     productosTienda.mostrarProductos();
 
     // Se imprime un mensaje indicando los datos al momento del cierre de la tienda
@@ -456,9 +464,10 @@ const main = async () => {
     console.log(`♦  `.magenta + `Datos Cierre Tienda`.bgMagenta + `  ♦`.magenta);
     console.log(`♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦\n`.magenta);
 
+    //Se llama al método mostrarProductos
     productosTienda.mostrarProductos();
 
-    // Se espera a que se complete la función nuevoIngreso antes de continuar
+    //Se espera a que se complete la función nuevoIngreso antes de continuar
     await productosTienda.nuevoIngreso();
 
     // Se espera a que se complete la función nuevoPedido antes de continuar
